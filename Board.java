@@ -1,36 +1,28 @@
-public class Board {
+import java.util.*;
 
-    private Piece[][] pieces = new Piece[8][8];
+public class Board {
+    private Piece[][] pieces = new Piece[8][8]; // initially null
+    private Board b_instance = null;
 
     private Board() {
     }
 
     public static Board theBoard() {
-        if ()
+        if (b_instance == null)
+            b_instance = new Board();
         return null; // implement this
     }
-
-    public Int column2int(String colume) {
-        int temp = (int) colume.toLowerCase();
-        int temp_integer = 96; // for lower case
-
-        try{
-            if(temp <= 122 & temp >= 97) {
-                return (temp - temp_integer);
-            }
-            else{
-                throw new UnsupportedOperationException();
-            }
-        }catch (Exception e) {
-            System.out.println("Something went wrong with `column2int`.");
-        }
 
     // Returns piece at given loc or null if no such piece
     // exists
     public Piece getPiece(String loc) {
-        Int i = column2int(loc[0]);
-        Int j = (int) loc[1];
-        return pieces[i][j];
+        int[] locArray = Helper.getlocarray(loc);
+
+        // if invalid loc
+        if(locArray[0] >=8 || locArray[1] >=8)
+            throw new ArrayIndexOutOfBoundsException();
+
+        return pieces[locArray[0]][locArray[1]];
         // throw new UnsupportedOperationException();
     }
 
@@ -43,7 +35,8 @@ public class Board {
     }
 
     public void clear() {
-        throw new UnsupportedOperationException();
+        pieces = new Piece[8][8];
+        // throw new UnsupportedOperationException();
     }
 
     public void registerListener(BoardListener bl) {

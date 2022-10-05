@@ -1,6 +1,7 @@
-import java.util.*;
+import java.util.List;
 
 abstract public class Piece {
+    public static HashMap<Character, PieceFactory> pf_map = new HashMap();
     public static void registerPiece(PieceFactory pf) {
         throw new UnsupportedOperationException();
     }
