@@ -4,14 +4,14 @@ import java.util.Scanner; // Import the Scanner class to read text files
 
 public class Try {
     public static void main(String[] args) {
-        // readFiles(args);
-        String str = "abcdefgh";
-        int temp_integer = 96; // for lower case
-        for (char c : str.toCharArray()) {
-            int temp = (int) c;
-            if (temp <= 122 & temp >= 97)
-                System.out.print(temp - temp_integer);
-        }
+         readFiles(args);
+//        String str = "abcdefgh";
+//        int temp_integer = 96; // for lower case
+//        for (char c : str.toCharArray()) {
+//            int temp = (int) c;
+//            if (temp <= 122 & temp >= 97)
+//                System.out.print(temp - temp_integer);
+//        }
     }
 
     public static void readFiles(String[] args) {
@@ -23,10 +23,13 @@ public class Try {
             while (myReader.hasNextLine()) {
                 String line = myReader.nextLine();
                 if (line.startsWith("#")) {
+                    // not read the layout input beginning with '#'
                     continue;
                 }
                 // do sth
-                System.out.println(line);
+                String[] splitArray = line.split("=",2);
+                for(String a:splitArray)
+                    System.out.println(a);
             }
 
             System.out.println("\n");

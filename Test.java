@@ -14,6 +14,7 @@ public class Test {
 
     public static void test2() {
         Board b = Board.theBoard();
+
         // initially register Pieces with Factories
 		Piece.registerPiece(new KingFactory());
 		Piece.registerPiece(new QueenFactory());
@@ -21,7 +22,10 @@ public class Test {
 		Piece.registerPiece(new BishopFactory());
 		Piece.registerPiece(new RookFactory());
 		Piece.registerPiece(new PawnFactory());
-		b.registerListener(new Logger());
+
+        // two listeners to the list
+        b.registerListener(new Logger());
+        b.registerListener(new Logger());
 
         // operate piece
         Piece bk = Piece.createPiece("bk");
@@ -30,10 +34,12 @@ public class Test {
         assert bk.toString() == "bk";
         b.addPiece(bk, "c4");
         assert b.getPiece("c4") == bk;
+        b.addPiece(Piece.createPiece("wq"), "b1");
         assert bk.moves(b, "c4").contains("c3");
         assert !bk.moves(b, "c4").contains("c1");
         b.movePiece("c4", "c3");
         b.removeAllListeners();
+        b.clear();
     }
 
     public static void main(String[] args) {

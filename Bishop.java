@@ -16,7 +16,17 @@ public class Bishop extends Piece {
     }
 
     public List<String> moves(Board b, String loc) {
-	throw new UnsupportedOperationException();
+//	throw new UnsupportedOperationException();
+        int[] locArray = Helper.getLocArray(loc);
+        List<String> retList = new ArrayList<>();
+
+        // valid moves
+        for(int i = 0;i<8;i++) {
+            retList.add(Helper.getLocStr(i,locArray[0]+locArray[1]-i));
+            retList.add(Helper.getLocStr(i,locArray[0]-locArray[1]+i));
+        }
+
+        return retList;
     }
 
 }
