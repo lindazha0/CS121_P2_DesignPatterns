@@ -55,8 +55,18 @@ public class Board {
         if(!pieces[fromArray[0]][fromArray[1]].moves(b_instance, from).contains(to))
             throw new UnsupportedOperationException();
 
-        // move
-        pieces[toArray[0]][toArray[1]] = pieces[fromArray[0]][fromArray[1]];
+        // make a move
+        Piece p = pieces[fromArray[0]][fromArray[1]];
+        // call the observers
+        for(BoardListener listener : listenerList){
+            listener.onMove(from, to, p);
+//            if capture sth
+            if(pieces[toArray[0]][toArray[1]]!=null){
+                listener.onCapture(p,pieces[toArray[0]][toArray[1]]);
+            }
+        }
+        // modify the board pieces
+        pieces[toArray[0]][toArray[1]] = p;
         pieces[fromArray[0]][fromArray[1]] = null;
     }
 
@@ -81,6 +91,11 @@ public class Board {
     }
 
     public void iterate(BoardInternalIterator bi) {
-        throw new UnsupportedOperationException();
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                bi.visit(Helper.getLocStr(i,j),pieces[i][j]);
+            }
+        }
+//        throw new UnsupportedOperationException();
     }
 }
