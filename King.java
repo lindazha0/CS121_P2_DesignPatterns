@@ -1,15 +1,33 @@
 import java.util.*;
 
 public class King extends Piece {
-    public King(Color c) { throw new UnsupportedOperationException(); }
+    public King(Color c) {
+        color = c;
+//        throw new UnsupportedOperationException()
+    }
     // implement appropriate methods
 
     public String toString() {
-	throw new UnsupportedOperationException();
+        if (color==null)
+        	throw new UnsupportedOperationException();
+        String s = color.getColorStr()+"k";
+        return s;
     }
 
     public List<String> moves(Board b, String loc) {
-	throw new UnsupportedOperationException();
+        int[] locArray = Helper.getLocArray(loc);
+        List<String> retList = new ArrayList<>();
+
+        // valid moves
+        for(int i=Math.max(0,locArray[0]-1);i<=Math.min(locArray[0]+2,7);i++) {
+            for (int j = Math.max(0,locArray[1]-1); j <=Math.min(locArray[1] + 2,7); j++) {
+                if(i!=locArray[0] || j!=locArray[1])
+                    retList.add(Helper.getLocStr(i,j));
+            }
+        }
+
+        return retList;
+//	throw new UnsupportedOperationException();
     }
 
 }

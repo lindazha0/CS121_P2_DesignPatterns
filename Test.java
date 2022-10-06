@@ -9,7 +9,7 @@ public class Test {
         Piece.registerPiece(new PawnFactory());
         Piece p = Piece.createPiece("bp");
         b.addPiece(p, "a3");
-        // assert b.getPiece("a3") == p;
+         assert b.getPiece("a3") == p;
     }
 
     public static void test2() {

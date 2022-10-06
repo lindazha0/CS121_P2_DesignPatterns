@@ -2,7 +2,8 @@ import java.util.*;
 
 public class Board {
     private Piece[][] pieces = new Piece[8][8]; // initially null
-    private Board b_instance = null;
+    private static Board b_instance = null;
+    private List<BoardListener> listenerList = new LinkedList<>(); // store all listeners
 
     private Board() {
     }
@@ -10,13 +11,19 @@ public class Board {
     public static Board theBoard() {
         if (b_instance == null)
             b_instance = new Board();
-        return null; // implement this
+        return b_instance; // implement this
+    }
+
+    // if loc is occupied by any Piece
+    public boolean isOccupied(String loc){
+        int[] locArray = Helper.getLocArray(loc);
+        return pieces[locArray[0]][locArray[1]] != null;
     }
 
     // Returns piece at given loc or null if no such piece
     // exists
     public Piece getPiece(String loc) {
-        int[] locArray = Helper.getlocarray(loc);
+        int[] locArray = Helper.getLocArray(loc);
 
         // if invalid loc
         if(locArray[0] >=8 || locArray[1] >=8)
@@ -27,11 +34,30 @@ public class Board {
     }
 
     public void addPiece(Piece p, String loc) {
-        throw new UnsupportedOperationException();
+        int[] locArray = Helper.getLocArray(loc);
+
+        // if invalid loc
+        if(locArray[0] >=8 || locArray[1] >=8 || pieces[locArray[0]][locArray[1]]!=null)
+            throw new ArrayIndexOutOfBoundsException();
+
+        pieces[locArray[0]][locArray[1]] = p;
     }
 
     public void movePiece(String from, String to) {
-        throw new UnsupportedOperationException();
+        int[] fromArray = Helper.getLocArray(from);
+        int[] toArray = Helper.getLocArray(to);
+
+        // if invalid loc
+        if(fromArray[0] >=8 || fromArray[1] >=8 || toArray[0] >=8 || toArray[1] >=8)
+            throw new ArrayIndexOutOfBoundsException();
+
+//        if invalid move
+        if(!pieces[fromArray[0]][fromArray[1]].moves(b_instance, from).contains(to))
+            throw new UnsupportedOperationException();
+
+        // move
+        pieces[toArray[0]][toArray[1]] = pieces[fromArray[0]][fromArray[1]];
+        pieces[fromArray[0]][fromArray[1]] = null;
     }
 
     public void clear() {
@@ -40,15 +66,18 @@ public class Board {
     }
 
     public void registerListener(BoardListener bl) {
-        throw new UnsupportedOperationException();
+        listenerList.add(bl);
+//        throw new UnsupportedOperationException();
     }
 
     public void removeListener(BoardListener bl) {
-        throw new UnsupportedOperationException();
+        listenerList.remove(bl);
+//        throw new UnsupportedOperationException();
     }
 
     public void removeAllListeners() {
-        throw new UnsupportedOperationException();
+        listenerList = new LinkedList<>();
+//        throw new UnsupportedOperationException();
     }
 
     public void iterate(BoardInternalIterator bi) {
