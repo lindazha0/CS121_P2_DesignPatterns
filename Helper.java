@@ -22,7 +22,7 @@ public class Helper {
     // int, int -> String loc
     public static String getLocStr(int col, int row){
         char i = "abcdefgh".charAt(col);
-        char j = "12345678".charAt(col);
+        char j = "12345678".charAt(row);
 
         return (""+i+j);
     }

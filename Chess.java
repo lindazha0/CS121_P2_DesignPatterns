@@ -34,15 +34,15 @@ public class Chess {
 				}
 				// do sth
 				String[] splitArray = line.split("=",2);
-				System.out.println(splitArray[1]+" at "+splitArray[0]);
 				Piece p = Piece.createPiece(splitArray[1]);
-				System.out.println(p.toString());
+				System.out.println(p.toString()+" at "+splitArray[0]);
+//				System.out.println(p.toString());
 				Board.theBoard().addPiece(p, splitArray[0]);
 			}
 
 			// print original board
-//			System.out.println("Original board:");
-//			Board.theBoard().iterate(new BoardPrinter());
+			System.out.println("Original board:");
+			Board.theBoard().iterate(new BoardPrinter());
 
 			// read moves
 			myReader = new Scanner(moves);

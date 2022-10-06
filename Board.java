@@ -27,23 +27,25 @@ public class Board {
     // exists
     public Piece getPiece(String loc) {
         int[] locArray = Helper.getLocArray(loc);
+        int i=locArray[0], j=locArray[1];
 
         // if invalid loc
-        if(locArray[0] >=8 || locArray[1] >=8)
+        if(i >=8 || j >=8)
             throw new ArrayIndexOutOfBoundsException();
 
-        return pieces[locArray[0]][locArray[1]];
+        return pieces[i][j];
         // throw new UnsupportedOperationException();
     }
 
     public void addPiece(Piece p, String loc) {
         int[] locArray = Helper.getLocArray(loc);
+        int i=locArray[0], j=locArray[1];
 
         // if invalid loc
-        if(locArray[0] >=8 || locArray[1] >=8 || pieces[locArray[0]][locArray[1]]!=null)
+        if(i >=8 || j >=8 || pieces[i][j]!=null)
             throw new ArrayIndexOutOfBoundsException();
 
-        pieces[locArray[0]][locArray[1]] = p;
+        pieces[i][j] = p;
     }
 
     public void movePiece(String from, String to) {
@@ -86,8 +88,9 @@ public class Board {
     }
 
     public void removeListener(BoardListener bl) {
-        listenerList.remove(bl);
-//        throw new UnsupportedOperationException();
+        if(listenerList.contains(bl))
+            listenerList.remove(bl);
+        throw new UnsupportedOperationException();
     }
 
     public void removeAllListeners() {
@@ -98,7 +101,7 @@ public class Board {
     public void iterate(BoardInternalIterator bi) {
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
-                bi.visit(Helper.getLocStr(i,j),pieces[i][j]);
+                bi.visit(Helper.getLocStr(j,i), pieces[j][i]);
             }
         }
 //        throw new UnsupportedOperationException();

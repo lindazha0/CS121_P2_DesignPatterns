@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Queen extends Piece {
     public Queen(Color c) {
-        color = c;
+        this.color = c;
         // throw new UnsupportedOperationException();
     }
     // implement appropriate methods

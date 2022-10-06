@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Test {
 
     // Run "java -ea Test" to run with assertions enabled (If you run
@@ -24,20 +26,22 @@ public class Test {
 		Piece.registerPiece(new PawnFactory());
 
         // two listeners to the list
-        b.registerListener(new Logger());
+        Logger listener = new Logger();
+        b.registerListener(listener);
         b.registerListener(new Logger());
 
         // operate piece
         Piece bk = Piece.createPiece("bk");
         assert bk.color() == Color.BLACK;
         assert bk.color() != Color.WHITE;
-        assert bk.toString() == "bk";
+        assert Objects.equals(bk.toString(), "bk");
         b.addPiece(bk, "c4");
         assert b.getPiece("c4") == bk;
         b.addPiece(Piece.createPiece("wq"), "b1");
         assert bk.moves(b, "c4").contains("c3");
         assert !bk.moves(b, "c4").contains("c1");
         b.movePiece("c4", "c3");
+        b.removeListener(listener);
         b.removeAllListeners();
         b.clear();
     }
