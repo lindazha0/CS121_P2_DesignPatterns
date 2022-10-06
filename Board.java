@@ -55,11 +55,13 @@ public class Board {
             throw new ArrayIndexOutOfBoundsException();
 
 //        if invalid move
-        if(!pieces[fromArray[0]][fromArray[1]].moves(b_instance, from).contains(to))
+        Piece p = pieces[fromArray[0]][fromArray[1]];
+        if(!p.moves(b_instance, from).contains(to)){
+            System.out.println("invalid move: "+p.toString()+" from " + from + " to " + to);
             throw new UnsupportedOperationException();
+        }
 
         // make a move
-        Piece p = pieces[fromArray[0]][fromArray[1]];
         // call the observers
         for(BoardListener listener : listenerList){
             listener.onMove(from, to, p);
