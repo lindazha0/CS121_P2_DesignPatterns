@@ -4,7 +4,7 @@ public class Helper {
         int temp = (int) column;
         int temp_integer = 97; // for lower case only: begin from 0
 
-        if (temp <= 104 && temp >= 97) {
+        if (temp <= 105 && temp >= 97) {
             return (temp - temp_integer);
         } else {
             throw new ArrayIndexOutOfBoundsException();
@@ -13,8 +13,8 @@ public class Helper {
 
     // String loc -> int[] both from 0
     public static int[] getLocArray(String loc){
+        int i = column2int(loc.charAt(0));
         int j = loc.charAt(1) - '1';
-        int i = column2int(loc.toLowerCase().charAt(0));
 
         return new int[] {i,j};
     }

@@ -15,7 +15,9 @@ abstract public class Piece {
         Color color = Helper.getColor(name.charAt(0));
 
         // check the name format
-        Helper.column2int(pf_key);
+        if(!"kqnbrp".contains(pf_key.toString())){
+            throw new UnsupportedOperationException();
+        }
 
         return pf_map.get(pf_key).create(color);
 //        throw new UnsupportedOperationException();

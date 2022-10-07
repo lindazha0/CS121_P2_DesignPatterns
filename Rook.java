@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Rook extends Piece {
     public Rook(Color c) {
-        color=c;
+        this.color=c;
 //        throw new UnsupportedOperationException();
     }
     // implement appropriate methods
