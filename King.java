@@ -1,8 +1,10 @@
 import java.util.*;
 
 public class King extends Piece {
+    public static Color color = null;
+
     public King(Color c) {
-        color = c;
+        this.color = c;
 //        throw new UnsupportedOperationException()
     }
     // implement appropriate methods
@@ -10,7 +12,7 @@ public class King extends Piece {
     public String toString() {
         if (color==null)
         	throw new UnsupportedOperationException();
-        String s = color.getColorStr()+"k";
+        String s = this.color.getColorStr()+"k";
         return s;
     }
 

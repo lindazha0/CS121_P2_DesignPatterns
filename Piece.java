@@ -2,7 +2,7 @@ import java.util.*;
 
 abstract public class Piece {
     public static HashMap<Character, PieceFactory> pf_map = new HashMap<>();
-    public static Color color = null;
+    protected Color color;
 
     public static void registerPiece(PieceFactory pf) {
         Character pf_key = pf.symbol();
@@ -12,7 +12,7 @@ abstract public class Piece {
 
     public static Piece createPiece(String name) {
         Character pf_key = name.charAt(1);
-        color = Helper.getColor(name.charAt(0));
+        Color color = Helper.getColor(name.charAt(0));
 
         return pf_map.get(pf_key).create(color);
 //        throw new UnsupportedOperationException();
