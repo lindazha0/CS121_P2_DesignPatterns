@@ -14,6 +14,9 @@ abstract public class Piece {
         Character pf_key = name.charAt(1);
         Color color = Helper.getColor(name.charAt(0));
 
+        // check the name format
+        Helper.column2int(pf_key);
+
         return pf_map.get(pf_key).create(color);
 //        throw new UnsupportedOperationException();
     }

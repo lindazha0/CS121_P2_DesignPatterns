@@ -8,7 +8,7 @@ public enum Color {
             case WHITE:
                 return "w";
             default:
-                return null;
+                throw new UnsupportedOperationException();
         }
     }
 };

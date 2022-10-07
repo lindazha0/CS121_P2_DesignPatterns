@@ -90,7 +90,8 @@ public class Board {
     public void removeListener(BoardListener bl) {
         if(listenerList.contains(bl))
             listenerList.remove(bl);
-        throw new UnsupportedOperationException();
+        else{
+            throw new UnsupportedOperationException();}
     }
 
     public void removeAllListeners() {

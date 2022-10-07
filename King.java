@@ -1,8 +1,6 @@
 import java.util.*;
 
 public class King extends Piece {
-    public static Color color = null;
-
     public King(Color c) {
         this.color = c;
 //        throw new UnsupportedOperationException()

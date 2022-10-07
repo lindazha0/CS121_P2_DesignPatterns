@@ -1,10 +1,10 @@
 public class Helper {
     // char column -> int from 0 (with input check)
     public static int column2int(char column) {
-        int temp = String.valueOf(column).toLowerCase().charAt(0);
+        int temp = (int) column;
         int temp_integer = 97; // for lower case only: begin from 0
 
-        if (temp <= 122 & temp >= 97) {
+        if (temp <= 104 && temp >= 97) {
             return (temp - temp_integer);
         } else {
             throw new ArrayIndexOutOfBoundsException();
@@ -33,7 +33,7 @@ public class Helper {
         return switch (c) {
             case 'b' -> Color.BLACK;
             case 'w' -> Color.WHITE;
-            default -> null;
+            default -> throw new UnsupportedOperationException();
         };
     }
 
