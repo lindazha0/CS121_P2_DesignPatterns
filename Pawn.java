@@ -37,7 +37,7 @@ public class Pawn extends Piece {
                     retList.add(Helper.getLocStr(locArray[0],4));
             }
 
-            // capture
+            // diagonally capture
             for(int i: new int[]{1,-1}) {
                 for (int j: new int[]{1,-1}) {
                     if (locArray[0]+i>=0 && locArray[0]+i <8 && locArray[1]+j>=0 && locArray[1]+j <8){
@@ -61,7 +61,7 @@ public class Pawn extends Piece {
                     retList.add(Helper.getLocStr(locArray[0], 3));
             }
 
-            // capture
+            // diagonally capture
             for(int i: new int[]{1,-1}) {
                 for (int j: new int[]{1,-1}) {
                     if (locArray[0]+i>=0 && locArray[0]+i <8 && locArray[1]+j>=0 && locArray[1]+j <8){
