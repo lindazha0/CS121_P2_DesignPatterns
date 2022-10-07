@@ -22,8 +22,11 @@ public class Bishop extends Piece {
 
         // valid moves
         for(int i = 0;i<8;i++) {
-            retList.add(Helper.getLocStr(i,locArray[0]+locArray[1]-i));
-            retList.add(Helper.getLocStr(i,locArray[0]-locArray[1]+i));
+            if(locArray[0]+locArray[1]-i>=0 && locArray[0]+locArray[1]-i<8)
+                retList.add(Helper.getLocStr(i,locArray[0]+locArray[1]-i));
+
+            if(locArray[0]-locArray[1]+i>=0 && locArray[0]-locArray[1]+i<8)
+                retList.add(Helper.getLocStr(i,locArray[0]-locArray[1]+i));
         }
 
         return retList;
