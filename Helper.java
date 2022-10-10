@@ -30,11 +30,23 @@ public class Helper {
 
     // 'b/w' -> Color
     public static Color getColor(char c) {
-        return switch (c) {
-            case 'b' -> Color.BLACK;
-            case 'w' -> Color.WHITE;
-            default -> throw new UnsupportedOperationException();
-        };
+        switch (c) {
+            case 'b' :
+                return Color.BLACK;
+            case 'w' :
+                return Color.WHITE;
+            default :
+                throw new UnsupportedOperationException();
+        }
+    }
+
+    // print possible moves
+    public static void printMoves(Board b, String loc){
+        Piece p = b.getPiece(loc);
+        System.out.println("Possible moves of "+p.toString()+" at "+loc+" : ");
+        for(String move: p.moves(b, loc)){
+            System.out.println(move);
+        }
     }
 
 }

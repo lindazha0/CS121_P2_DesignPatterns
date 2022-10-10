@@ -11,8 +11,12 @@ abstract public class Piece {
     }
 
     public static Piece createPiece(String name) {
+        // check length
+        if(name.length()!=2)
+            throw new UnsupportedOperationException();
+
         Character pf_key = name.charAt(1);
-        Color color = Helper.getColor(name.charAt(0));
+        Color color = Helper.getColor(name.charAt(0)); // check & get color
 
         // check the name format
         if(!"kqnbrp".contains(pf_key.toString())){

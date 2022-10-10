@@ -42,6 +42,8 @@ public class Chess {
 			// print original board
 //			System.out.println("Original board:");
 //			Board.theBoard().iterate(new BoardPrinter());
+			for(String loc: new String[] {"b7","d7","b1","e1","h1","f1"})
+				Helper.printMoves(Board.theBoard(), loc);
 
 			// read moves
 			myReader = new Scanner(moves);

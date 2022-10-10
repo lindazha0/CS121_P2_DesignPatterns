@@ -102,7 +102,8 @@ public class Board {
     public void iterate(BoardInternalIterator bi) {
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
-                bi.visit(Helper.getLocStr(j,i), pieces[j][i]);
+                if(pieces[i][j]!=null)
+                    bi.visit(Helper.getLocStr(j,i), pieces[j][i]);
             }
         }
 //        throw new UnsupportedOperationException();

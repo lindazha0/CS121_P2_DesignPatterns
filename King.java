@@ -19,8 +19,8 @@ public class King extends Piece {
         List<String> retList = new ArrayList<>();
 
         // valid moves
-        for(int i=Math.max(0,locArray[0]-1);i<=Math.min(locArray[0]+2,7);i++) {
-            for (int j = Math.max(0,locArray[1]-1); j <=Math.min(locArray[1] + 2,7); j++) {
+        for(int i=Math.max(0,locArray[0]-1);i<=Math.min(locArray[0]+1,7);i++) {
+            for (int j = Math.max(0,locArray[1]-1); j <=Math.min(locArray[1] + 1,7); j++) {
                 if(i!=locArray[0] || j!=locArray[1])
                     retList.add(Helper.getLocStr(i,j));
             }
