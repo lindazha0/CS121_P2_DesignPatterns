@@ -37,7 +37,7 @@ public class Rook extends Piece {
                     if (b.isOccupied(leftLoc) == null) {
                         // empty at left
                         retList.add(leftLoc);
-                    } else if (!b.isOccupied(leftLoc).equals(color.getColorStr())) {
+                    } else if (!color.getColorStr().equals(b.isOccupied(leftLoc))) {
                         // enemy at left
                         retList.add(leftLoc);
                         isBlocked.put("left", Boolean.TRUE);
@@ -53,7 +53,7 @@ public class Rook extends Piece {
                     if (b.isOccupied(rightLoc) == null) {
                         // empty at right
                         retList.add(rightLoc);
-                    } else if (!b.isOccupied(rightLoc).equals(color.getColorStr())) {
+                    } else if (!color.getColorStr().equals(b.isOccupied(rightLoc))) {
                         // enemy at right
                         retList.add(rightLoc);
                         isBlocked.put("right", Boolean.TRUE);
@@ -70,7 +70,7 @@ public class Rook extends Piece {
                     if (b.isOccupied(upLoc) == null) {
                         // empty at up
                         retList.add(upLoc);
-                    } else if (!b.isOccupied(upLoc).equals(color.getColorStr())) {
+                    } else if (!color.getColorStr().equals(b.isOccupied(upLoc))) {
                         // enemy at up
                         retList.add(upLoc);
                         isBlocked.put("up", Boolean.TRUE);
@@ -86,7 +86,7 @@ public class Rook extends Piece {
                     if (b.isOccupied(downLoc) == null) {
                         // empty at down
                         retList.add(downLoc);
-                    } else if (!b.isOccupied(downLoc).equals(color.getColorStr())) {
+                    } else if (!color.getColorStr().equals(b.isOccupied(downLoc))) {
                         // enemy at down
                         retList.add(downLoc);
                         isBlocked.put("down", Boolean.TRUE);

@@ -45,7 +45,7 @@ public class Pawn extends Piece {
                 for (int j: new int[]{1,-1}) {
                     if (locArray[0]+i>=0 && locArray[0]+i <8 && locArray[1]+j>=0 && locArray[1]+j <8){
                         String dest = Helper.getLocStr(locArray[0]+i,locArray[1]+j);
-                        if(b.isOccupied(dest).equals("w"))
+                        if(Objects.equals(b.isOccupied(dest),"w"))
                             retList.add(dest);
                     }
                 }

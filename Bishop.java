@@ -36,7 +36,7 @@ public class Bishop extends Piece {
                 if (b.isOccupied(lupLoc) == null) {
                     // empty at lup
                     retList.add(lupLoc);
-                } else if (! b.isOccupied(lupLoc).equals(color.getColorStr())) {
+                } else if (! color.getColorStr().equals(b.isOccupied(lupLoc))) {
                     // enemy at lup
                     retList.add(lupLoc);
                     isBlocked.put("lup", Boolean.TRUE);
@@ -68,7 +68,7 @@ public class Bishop extends Piece {
                 if (b.isOccupied(rupLoc) == null) {
                     // empty at rup
                     retList.add(rupLoc);
-                } else if (!b.isOccupied(rupLoc).equals(color.getColorStr())) {
+                } else if (!color.getColorStr().equals(b.isOccupied(rupLoc))) {
                     // enemy at rup
                     retList.add(rupLoc);
                     isBlocked.put("rup", Boolean.TRUE);
@@ -84,7 +84,7 @@ public class Bishop extends Piece {
                 if (b.isOccupied(rdownLoc) == null) {
                     // empty at rdown
                     retList.add(rdownLoc);
-                } else if (!b.isOccupied(rdownLoc).equals(color.getColorStr())) {
+                } else if (!color.getColorStr().equals(b.isOccupied(rdownLoc))) {
                     // enemy at rdown
                     retList.add(rdownLoc);
                     isBlocked.put("rdown", Boolean.TRUE);
