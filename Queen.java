@@ -8,7 +8,7 @@ public class Queen extends Piece {
     // implement appropriate methods
 
     public String toString() {
-//        throw new UnsupportedOperationException();
+        // throw new UnsupportedOperationException();
         if (color==null)
             throw new UnsupportedOperationException();
         return color.getColorStr()+"q";
@@ -16,7 +16,7 @@ public class Queen extends Piece {
 
 
     public List<String> moves(Board b, String loc) {
-//        throw new UnsupportedOperationException();
+        // throw new UnsupportedOperationException();
         int[] locArray = Helper.getLocArray(loc);
         List<String> retList = new ArrayList<>();
 
@@ -27,8 +27,8 @@ public class Queen extends Piece {
                 retList.add(Helper.getLocStr(i,locArray[1]));
                 if(locArray[0]+locArray[1]-i>=0 && locArray[0]+locArray[1]-i<8)
                     retList.add(Helper.getLocStr(i,locArray[0]+locArray[1]-i));
-                if(locArray[0]-locArray[1]+i>=0 && locArray[0]-locArray[1]+i<8)
-                    retList.add(Helper.getLocStr(i,locArray[0]-locArray[1]+i));
+                if(locArray[1]-locArray[0]+i>=0 && locArray[1]-locArray[0]+i<8)
+                    retList.add(Helper.getLocStr(i,locArray[1]-locArray[0]+i));
             }
             if(i!=locArray[1])
                 retList.add(Helper.getLocStr(locArray[0],i));
