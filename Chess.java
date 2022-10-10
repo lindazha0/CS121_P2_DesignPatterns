@@ -54,6 +54,7 @@ public class Chess {
 				}
 				// do sth
 				String[] splitArray = line.split("-",2);
+//				Helper.printMoves(Board.theBoard(), splitArray[0]);
 				Board.theBoard().movePiece(splitArray[0],splitArray[1]);
 			}
 			myReader.close();

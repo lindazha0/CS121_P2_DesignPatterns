@@ -11,8 +11,7 @@ public class Bishop extends Piece {
 //	throw new UnsupportedOperationException();
         if (color==null)
             throw new UnsupportedOperationException();
-        String s = color.getColorStr()+"b";
-        return s;
+        return color.getColorStr()+"b";
     }
 
     public List<String> moves(Board b, String loc) {
@@ -20,17 +19,83 @@ public class Bishop extends Piece {
         int[] locArray = Helper.getLocArray(loc);
         List<String> retList = new ArrayList<>();
 
-        // valid moves
-        for(int i = 0;i<8;i++) {
-            if(i != locArray[0])
-            {
-                int y1 = locArray[0]+locArray[1]-i, y2 = locArray[1]-locArray[0]+i;
-                if(y1>=0 && y1<8)
-                    retList.add(Helper.getLocStr(i,y1));
-                if(y2>=0 && y2<8)
-                    retList.add(Helper.getLocStr(i,y2));
+        // find all valid moves
+        Map<String, Boolean> isBlocked=new HashMap<>();
+        isBlocked.put("lup", Boolean.FALSE);
+        isBlocked.put("ldown", Boolean.FALSE);
+        isBlocked.put("rup", Boolean.FALSE);
+        isBlocked.put("rdown", Boolean.FALSE);
+
+        // 4 path with different direction, stop until blocked
+        for(int i = 1;i<8;i++) {
+            //# region : diagonal: lup, ldown, rup, rdown
+            // lup -i,+i
+            if (locArray[0]-i >= 0 && locArray[1]+i < 8) {
+            String lupLoc = Helper.getLocStr(locArray[0]-i, locArray[1]+i);
+            if (!isBlocked.get("lup"))
+                if (b.isOccupied(lupLoc) == null) {
+                    // empty at lup
+                    retList.add(lupLoc);
+                } else if (! b.isOccupied(lupLoc).equals(color.getColorStr())) {
+                    // enemy at lup
+                    retList.add(lupLoc);
+                    isBlocked.put("lup", Boolean.TRUE);
+                } else {
+                    // same color at lup
+                    isBlocked.put("lup", Boolean.TRUE);
+                }
             }
+            // ldown -i,-i
+            if (locArray[0]-i >= 0 && locArray[1]-i >= 0) {
+            String ldownLoc = Helper.getLocStr(locArray[0]-i, locArray[1]-i);
+            if (!isBlocked.get("ldown"))
+                if (b.isOccupied(ldownLoc) == null) {
+                    // empty at ldown
+                    retList.add(ldownLoc);
+                } else if (!Objects.equals(b.isOccupied(ldownLoc), color.getColorStr())) {
+                    // enemy at ldown
+                    retList.add(ldownLoc);
+                    isBlocked.put("ldown", Boolean.TRUE);
+                } else {
+                    // same color at ldown
+                    isBlocked.put("ldown", Boolean.TRUE);
+                }
         }
+        // rup +i,+i
+        if (locArray[0]+i < 8 && locArray[1]+i < 8) {
+            String rupLoc = Helper.getLocStr(locArray[0]+i, locArray[1]+i);
+            if (!isBlocked.get("rup"))
+                if (b.isOccupied(rupLoc) == null) {
+                    // empty at rup
+                    retList.add(rupLoc);
+                } else if (!b.isOccupied(rupLoc).equals(color.getColorStr())) {
+                    // enemy at rup
+                    retList.add(rupLoc);
+                    isBlocked.put("rup", Boolean.TRUE);
+                } else {
+                    // same color at rup
+                    isBlocked.put("rup", Boolean.TRUE);
+                }
+        }
+        // rdown +i,-i
+        if (locArray[0]+i < 8 && locArray[1]-i >= 0) {
+            String rdownLoc = Helper.getLocStr(locArray[0]+i, locArray[1]-i);
+            if (!isBlocked.get("rdown"))
+                if (b.isOccupied(rdownLoc) == null) {
+                    // empty at rdown
+                    retList.add(rdownLoc);
+                } else if (!b.isOccupied(rdownLoc).equals(color.getColorStr())) {
+                    // enemy at rdown
+                    retList.add(rdownLoc);
+                    isBlocked.put("rdown", Boolean.TRUE);
+                } else {
+                    // same color at rdown
+                    isBlocked.put("rdown", Boolean.TRUE);
+                }
+        }
+        // #endregion
+        }
+
 
         return retList;
     }

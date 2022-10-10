@@ -23,12 +23,15 @@ public class Pawn extends Piece {
         List<String> retList = new ArrayList<>();
 
         // valid moves
-        if(color.getColorStr()=="b"){
-//            black
+        if(color.getColorStr().equals("b")){
+//            black: [1]--
 
             // 1 step vertically
-            if(locArray[1]>0)
-                retList.add(Helper.getLocStr(locArray[0],locArray[1]-1));
+            if(locArray[1]>0){
+                String dest = Helper.getLocStr(locArray[0],locArray[1]-1);
+                if(b.isOccupied(dest)==null)
+                    retList.add(dest);
+            }
 
             // 2 step vertically
             if(locArray[1]==6){
@@ -42,17 +45,20 @@ public class Pawn extends Piece {
                 for (int j: new int[]{1,-1}) {
                     if (locArray[0]+i>=0 && locArray[0]+i <8 && locArray[1]+j>=0 && locArray[1]+j <8){
                         String dest = Helper.getLocStr(locArray[0]+i,locArray[1]+j);
-                        if(b.isOccupied(dest)=="w")
+                        if(b.isOccupied(dest).equals("w"))
                             retList.add(dest);
                     }
                 }
             }
         }else {
-//            white
+//            white: [1]++
 
             // 1 step vertically
-            if (locArray[1] < 7)
-                retList.add(Helper.getLocStr(locArray[0], locArray[1] + 1));
+            if(locArray[1]<7){
+                String dest = Helper.getLocStr(locArray[0],locArray[1]+1);
+                if(b.isOccupied(dest)==null)
+                    retList.add(dest);
+            }
 
             // 2 step vertically
             if (locArray[1] == 1) {
@@ -66,7 +72,7 @@ public class Pawn extends Piece {
                 for (int j: new int[]{1,-1}) {
                     if (locArray[0]+i>=0 && locArray[0]+i <8 && locArray[1]+j>=0 && locArray[1]+j <8){
                         String dest = Helper.getLocStr(locArray[0]+i,locArray[1]+j);
-                        if(b.isOccupied(dest)=="b")
+                        if(Objects.equals(b.isOccupied(dest), "b"))
                             retList.add(dest);
                     }
                 }

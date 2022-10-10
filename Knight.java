@@ -23,15 +23,22 @@ public class Knight extends Piece {
         // valid moves
         for(int i: new int[]{2,-2}) {
             for (int j: new int[]{1,-1}) {
-                if (locArray[0]+i>=0 && locArray[0]+i <8 && locArray[1]+j>=0 && locArray[1]+j <8)
-                    retList.add(Helper.getLocStr(locArray[0]+i,locArray[1]+j));
+                //check boundary
+                if (locArray[0]+i>=0 && locArray[0]+i <8 && locArray[1]+j>=0 && locArray[1]+j <8){
+                    String dest = Helper.getLocStr(locArray[0]+i,locArray[1]+j);
+                    if(!color.getColorStr().equals(b.isOccupied(dest)))
+                        retList.add(dest);
+                }
             }
         }
 
         for(int j: new int[]{2,-2}) {
             for (int i: new int[]{1,-1}) {
-                if (locArray[0]+i>=0 && locArray[0]+i <8 && locArray[1]+j>=0 && locArray[1]+j <8)
-                    retList.add(Helper.getLocStr(locArray[0]+i,locArray[1]+j));
+                if (locArray[0]+i>=0 && locArray[0]+i <8 && locArray[1]+j>=0 && locArray[1]+j <8) {
+                    String dest = Helper.getLocStr(locArray[0]+i,locArray[1]+j);
+                    if(!color.getColorStr().equals(b.isOccupied(dest)))
+                        retList.add(dest);
+                }
             }
         }
 

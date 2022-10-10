@@ -14,8 +14,10 @@ public class Board {
         return b_instance; // implement this
     }
 
-    // if loc is occupied by any Piece, return the color char, else return '0'
+
     public String isOccupied(String loc){
+        /* if loc is occupied by any Piece, return the color char, else return '0'
+         * */
         int[] locArray = Helper.getLocArray(loc);
 
         if (pieces[locArray[0]][locArray[1]] == null)
