@@ -16,10 +16,10 @@ abstract public class Piece {
             throw new UnsupportedOperationException();
 
         Character pf_key = name.charAt(1);
-        Color color = Helper.getColor(name.charAt(0)); // check & get color
+        Color color = Helper.getColor(name.charAt(0));  // check & get color
 
         // check the name format
-        if(!"kqnbrp".contains(pf_key.toString())){
+        if(!pf_map.containsKey(pf_key)){
             throw new UnsupportedOperationException();
         }
 
