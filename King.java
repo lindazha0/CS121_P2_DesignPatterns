@@ -21,7 +21,7 @@ public class King extends Piece {
         // valid moves
         for(int i=Math.max(0,locArray[0]-1);i<=Math.min(locArray[0]+1,7);i++) {
             for (int j = Math.max(0,locArray[1]-1); j <=Math.min(locArray[1] + 1,7); j++) {
-                if(color.getColorStr().equals(b.isOccupied(Helper.getLocStr(i,j))) && (i!=locArray[0] || j!=locArray[1])) {
+                if(!color.getColorStr().equals(b.isOccupied(Helper.getLocStr(i,j))) && (i!=locArray[0] || j!=locArray[1])) {
                     retList.add(Helper.getLocStr(i,j));
                 }
             }
