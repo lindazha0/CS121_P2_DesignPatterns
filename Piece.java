@@ -4,7 +4,7 @@ abstract public class Piece {
     public static HashMap<Character, PieceFactory> pf_map = new HashMap<>();
     protected Color color;
 
-    public static void registerPiece(PieceFactory pf) {
+    public static void registerPiece (PieceFactory pf) {
         Character pf_key = pf.symbol();
         pf_map.put(pf_key, pf);
 //        throw new UnsupportedOperationException();
