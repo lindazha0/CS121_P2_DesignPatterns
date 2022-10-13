@@ -42,11 +42,10 @@ public class Pawn extends Piece {
 
             // diagonally capture
             for(int i: new int[]{1,-1}) {
-                for (int j: new int[]{1,-1}) {
-                    if (locArray[0]+i>=0 && locArray[0]+i <8 && locArray[1]+j>=0 && locArray[1]+j <8){
-                        String dest = Helper.getLocStr(locArray[0]+i,locArray[1]+j);
-                        if(Objects.equals(b.isOccupied(dest),"w"))
-                            retList.add(dest);
+                if (locArray[0]+i>=0 && locArray[0]+i <8 && locArray[1]-1>=0 && locArray[1]-1 <8){
+                    String dest = Helper.getLocStr(locArray[0]+i,locArray[1]-1);
+                    if(Objects.equals(b.isOccupied(dest),"w")){
+                        retList.add(dest);
                     }
                 }
             }
@@ -69,13 +68,11 @@ public class Pawn extends Piece {
 
             // diagonally capture
             for(int i: new int[]{1,-1}) {
-                for (int j: new int[]{1,-1}) {
-                    if (locArray[0]+i>=0 && locArray[0]+i <8 && locArray[1]+j>=0 && locArray[1]+j <8){
-                        String dest = Helper.getLocStr(locArray[0]+i,locArray[1]+j);
+                    if (locArray[0]+i>=0 && locArray[0]+i <8 && locArray[1]+1>=0 && locArray[1]+1 <8){
+                        String dest = Helper.getLocStr(locArray[0]+i,locArray[1]+1);
                         if(Objects.equals(b.isOccupied(dest), "b"))
                             retList.add(dest);
                     }
-                }
             }
         }
 
